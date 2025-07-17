@@ -1,113 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Terms & Conditions | CutIt.sbs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions - CutIt.sbs</title>
   <link rel="icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
+    :root {
+      --bg-color: #f9f9fb;
+      --text-color: #111;
+      --header-color: #222;
+      --description-color: #444;
+      --link-color: #0077cc;
+    }
+
+    body.dark-mode {
+      --bg-color: #111;
+      --text-color: #f9f9fb;
+      --header-color: #fff;
+      --description-color: #ccc;
+      --link-color: #66b3ff;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #ffecd2, #fcb69f);
-      color: #222;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-color), #f0f0f0);
+      color: var(--text-color);
       padding: 2rem;
+      transition: background 0.4s ease, color 0.3s ease;
+      min-height: 100vh;
+    }
+
+    header {
+      font-family: 'Antonio', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--header-color);
       animation: fadeIn 1s ease-in;
     }
 
-    .container {
-      max-width: 850px;
-      background: #fffefa;
-      padding: 3rem 2rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      animation: slideUp 1.2s ease;
+    .toggle-theme {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #ff5722;
-      text-align: center;
+    .toggle-theme:hover {
+      background-color: var(--text-color);
+      color: var(--bg-color);
     }
 
-    h2 {
-      color: #333;
-      font-size: 1.3rem;
-      margin-top: 2rem;
-    }
-
-    p {
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
       line-height: 1.7;
-      color: #555;
-      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: var(--description-color);
+      animation: slideIn 0.8s ease-in-out;
     }
 
-    .emoji {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      animation: bounce 1.5s infinite;
+    .content h2 {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      color: var(--header-color);
+    }
+
+    .content a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      text-decoration: underline;
     }
 
     footer {
+      margin-top: 4rem;
+      font-size: 0.85rem;
       text-align: center;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #888;
+      color: #999;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.1rem; }
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.8rem;
+      }
+      .content {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+      }
+      .toggle-theme {
+        font-size: 0.75rem;
+        top: 1rem;
+        right: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="emoji">📜</div>
-    <h1>Terms & Conditions</h1>
-    <p>Welcome to <strong>CutIt.sbs</strong> — our digital lemonade stand for short links. By using our website, you're basically saying "Cool, I agree" to the following terms (even if you didn’t read them… but you should).</p>
+  <button class="toggle-theme" id="themeToggle">🌙 Dark Mode</button>
+  <header>Terms & Conditions</header>
+  <div class="content">
+    <p>By using <strong>CutIt.sbs</strong>, you agree to the following (we kept it simple – no law school degree needed):</p>
 
-    <h2>1. Use It, Don’t Abuse It</h2>
-    <p>We made this tool to make life simpler. Don’t use it for spam, scams, hate, or any villainous activities. If you're planning world domination, please do it elsewhere.</p>
+    <h2>1. Don’t Be Evil</h2>
+    <p>Don't use CutIt.sbs to share harmful, illegal, or misleading content. We built this for good vibes only. Karma is watching. 👀</p>
 
-    <h2>2. No Link Shenanigans</h2>
-    <p>Don’t shorten shady links. If you’re redirecting people to malware, phishing sites, or bad Bollywood remakes — we reserve the right to delete it faster than a WhatsApp forward.</p>
+    <h2>2. Data Simplicity</h2>
+    <p>We don’t sell your data. We don’t stalk your clicks. We don’t have time for that. Your trust > anything else.</p>
 
-    <h2>3. No Promises</h2>
-    <p>We do our best to keep things running smooth, but things break. It’s tech. Don’t sue us if your link doesn’t work while you're trying to impress your crush.</p>
+    <h2>3. No Uptime Promises</h2>
+    <p>We’re hosted on the internet gods (GitHub/Netlify/etc.), so sometimes things might hiccup. If it goes down, we’ll get it back up faster than your chai cools. ☕</p>
 
-    <h2>4. Content Ownership</h2>
-    <p>Your content is yours. We don’t own it. But if it’s illegal or harmful, we’ll have to remove it — even if it has great meme potential.</p>
+    <h2>4. You Own Your Links</h2>
+    <p>We don’t claim ownership over what you shorten. But please don’t shorten dangerous or spammy stuff. We’ll block it. 💥</p>
 
-    <h2>5. Changes to Terms</h2>
-    <p>We might update these terms if we get smarter or make mistakes. Keep checking once in a while. Or don’t. Just be a decent human.</p>
+    <h2>5. Terms May Change</h2>
+    <p>We might update this page once in a while (like fresh code). If something major changes, we’ll let you know.</p>
 
-    <h2>6. Contact Us</h2>
-    <p>Got questions, ideas, or complaints? Send us an email at <a href="mailto:nitinrajsingh@ajivatalks.in">nitinrajsingh@ajivatalks.in</a> — no spam, please. We already get enough from our ISP.</p>
-
-    <footer>&copy; 2025 CutIt.sbs | Made with ❤️, sarcasm, and short links</footer>
+    <p>Still have questions? <a href="mailto:nitinrajsingh@ajivatalks.in">Ping us</a> anytime.</p>
   </div>
+  <footer>&copy; 2025 CutIt.sbs. Made with 💛 and filter coffee.</footer>
+
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+      this.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+  </script>
 </body>
 </html>
