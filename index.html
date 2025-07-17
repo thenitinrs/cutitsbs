@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CutIt.sbs - Coming Soon</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -103,19 +103,24 @@
       margin: 0 1rem;
       color: var(--description-color);
       text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--text-color);
     }
 
     footer {
       margin-top: auto;
       font-size: 0.9rem;
-      color: #aaa;
+      color: #888;
       padding: 1rem 0;
     }
 
-    footer a {
-      color: inherit;
-      text-decoration: none;
-      margin: 0 0.5rem;
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
@@ -134,13 +139,12 @@
     </div>
     <nav>
       <a href="mailto:nitinrajsingh@ajivatalks.in">Contact Us</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </nav>
   </main>
   <footer>
     &copy; 2025 CutIt.sbs. All rights reserved.
-    <br />
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="404.html">404 Page</a>
   </footer>
   <script>
     document.getElementById('themeToggle').addEventListener('click', function () {
